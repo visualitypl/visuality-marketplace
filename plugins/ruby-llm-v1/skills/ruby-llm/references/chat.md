@@ -38,7 +38,7 @@ chat.with_instructions("Also cite sources.", replace: false)
 ```ruby
 chat = RubyLLM.chat(model: 'claude-sonnet-4-6')
 # or switch mid-conversation:
-chat.with_model('claude-opus-4-7')
+chat.with_model('claude-opus-4-6')
 ```
 
 No provider argument needed — RubyLLM infers it from the model ID via the registry (`models.json`). Override only for unregistered models via `provider:` + `assume_model_exists: true`.
@@ -91,14 +91,25 @@ Prefer [structured-output.md](structured-output.md) `with_schema` over `with_par
 
 ## Extended thinking (Claude, reasoning models)
 
+Providers differ in what `with_thinking` accepts. RubyLLM forwards values verbatim; calling it with no args raises `ArgumentError` immediately, and a provider-rejected shape raises at request time.
+
+| Provider | `effort:` | `budget:` (Integer) | Notes |
+| :--- | :--- | :--- | :--- |
+| Anthropic | no | yes, required | `effort:` alone raises `ArgumentError: Anthropic thinking requires a budget` at request time |
+| OpenAI | yes (`:low` / `:medium` / `:high`) | no | forwarded as `reasoning_effort` |
+| Gemini | yes | yes | maps to `thinkingLevel` / `thinkingBudget`; accepts either or both |
+| Bedrock | yes | yes | `effort: :none` disables; accepts either shape |
+
 ```ruby
-chat = RubyLLM.chat(model: 'claude-opus-4-7')
-chat.with_thinking(effort: :high)    # :low / :medium / :high
-chat.with_thinking(budget: 10_000)   # explicit token budget
-chat.with_thinking(effort: :none)    # disable on models that think by default (e.g. Qwen3)
+# Anthropic — budget only
+chat = RubyLLM.chat(model: 'claude-opus-4-6')
+chat.with_thinking(budget: 10_000)
+
+# OpenAI / Gemini / Bedrock — effort shortcut
+RubyLLM.chat(model: 'gpt-5').with_thinking(effort: :high)
 ```
 
-Requires a model that supports `reasoning?`. Check with `RubyLLM.models.find(id).reasoning?` (see [models.md](models.md)). Passing neither `:effort` nor `:budget` raises `ArgumentError` — RubyLLM forwards the values verbatim, so consult your provider's docs for accepted ranges.
+Requires a model that supports `reasoning?`. Check with `RubyLLM.models.find(id).reasoning?` (see [models.md](models.md)).
 
 `response.thinking` returns a `RubyLLM::Thinking` (or nil) with `.text` and `.signature` — not a string:
 
