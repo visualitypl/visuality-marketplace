@@ -1,0 +1,14 @@
+{
+  "name": "ruby-llm-v1",
+  "version": "0.1.0",
+  "description": "Claude Code skill for RubyLLM gem 1.x (currently pinned to 1.14.1) — unified Ruby API for OpenAI, Anthropic, Gemini, Bedrock, Azure, OpenRouter and more. Covers chat, streaming, tools, structured output (RubyLLM::Schema), Rails integration (acts_as_chat, Turbo broadcasting, generators), agents, embeddings, image generation, moderation, transcription and error hierarchy. Every claim verified against crmne/ruby_llm@1.14.1 source.",
+  "author": {
+    "name": "Paweł Strzałkowski",
+    "email": "p.strzalkowski@visuality.pl"
+  },
+  "homepage": "https://rubyllm.com",
+  "repository": "https://github.com/visualitypl/visuality-marketplace",
+  "license": "MIT",
+  "keywords": ["ruby", "rails", "llm", "ai", "rubyllm", "openai", "anthropic"],
+  "skills": "./skills/"
+}
