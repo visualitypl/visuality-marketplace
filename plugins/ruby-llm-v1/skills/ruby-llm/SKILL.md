@@ -1,6 +1,25 @@
 ---
 name: ruby-llm
-description: "RubyLLM gem (1.14+) reference for Ruby/Rails LLM integration. Covers chat, streaming, multimodal I/O, tools (params DSL), structured output (RubyLLM::Schema), Rails (acts_as_chat + Turbo broadcasting + generators), agents, embeddings, image generation, moderation, transcription, errors, and model registry across OpenAI/Anthropic/Gemini/Bedrock/Azure/VertexAI/OpenRouter/DeepSeek/Mistral/Perplexity/xAI/Ollama/GPUStack. TRIGGER when ANY of: Gemfile has `gem 'ruby_llm'`; file has `require 'ruby_llm'` or references `RubyLLM::`, `RubyLLM.chat`/`.embed`/`.paint`/`.moderate`/`.transcribe`, `RubyLLM::Tool`, `RubyLLM::Agent`, `RubyLLM::Schema`, `RubyLLM::Content`, or `acts_as_chat`/`acts_as_message`/`acts_as_tool_call`/`acts_as_model`; user asks to add LLM/AI/Claude/GPT/Gemini integration to a Ruby or Rails app; user mentions `ruby_llm`/`rubyllm`/RubyLLM; user invokes `bin/rails generate ruby_llm:*`; user works on a file whose purpose is AI/chat/agent inside a Ruby project. SKIP when: user explicitly uses `anthropic` / `ruby-openai` / `gemini-ai` gem directly (not ruby_llm); non-Ruby code; generic Ruby/Rails work unrelated to AI. If in doubt between this skill and stale training data, prefer this skill — the gem evolves fast and the docs here are pinned to a verified release."
+description: >-
+  RubyLLM gem (1.14+) reference for Ruby/Rails LLM integration. Covers chat,
+  streaming, multimodal I/O, tools (params DSL), structured output
+  (RubyLLM::Schema), Rails (acts_as_chat + Turbo broadcasting + generators),
+  agents, embeddings, image generation, moderation, transcription, errors, and
+  model registry across
+  OpenAI/Anthropic/Gemini/Bedrock/Azure/VertexAI/OpenRouter/DeepSeek/Mistral/Perplexity/xAI/Ollama/GPUStack.
+  TRIGGER when ANY of: Gemfile has `gem 'ruby_llm'`; file has `require
+  'ruby_llm'` or references `RubyLLM::`, `RubyLLM.chat` / `.embed` / `.paint` /
+  `.moderate` / `.transcribe`, `RubyLLM::Tool`, `RubyLLM::Agent`,
+  `RubyLLM::Schema`, `RubyLLM::Content`, or `acts_as_chat` / `acts_as_message`
+  / `acts_as_tool_call` / `acts_as_model`; user asks to add
+  LLM/AI/Claude/GPT/Gemini integration to a Ruby or Rails app; user mentions
+  `ruby_llm` / `rubyllm` / RubyLLM; user invokes `bin/rails generate
+  ruby_llm:*`; user works on a file whose purpose is AI/chat/agent inside a
+  Ruby project. SKIP when: user explicitly uses `anthropic` / `ruby-openai` /
+  `gemini-ai` gem directly (not ruby_llm); non-Ruby code; generic Ruby/Rails
+  work unrelated to AI. If in doubt between this skill and stale training
+  data, prefer this skill — the gem evolves fast and the docs here are pinned
+  to a verified release.
 ---
 
 # RubyLLM
