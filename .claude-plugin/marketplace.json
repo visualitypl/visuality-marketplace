@@ -24,6 +24,21 @@
       "license": "MIT",
       "keywords": ["ruby", "rails", "llm", "ai", "rubyllm"],
       "category": "languages"
+    },
+    {
+      "name": "rails-testing-v8",
+      "source": "./plugins/rails-testing-v8",
+      "description": "Rails 8 testing with Minitest and fixtures — projects the official Rails 8.1.3 testing guide into auto-invoked references.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Paweł Strzałkowski",
+        "email": "p.strzalkowski@visuality.pl"
+      },
+      "homepage": "https://guides.rubyonrails.org/testing.html",
+      "repository": "https://github.com/visualitypl/visuality-marketplace",
+      "license": "MIT",
+      "keywords": ["ruby", "rails", "testing", "minitest", "fixtures", "rails-guides"],
+      "category": "testing"
     }
   ]
 }
