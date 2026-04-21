@@ -254,21 +254,7 @@ def create
 end
 ```
 
-Now the tests should pass:
-
-```bash
-$ bin/rails test test/controllers/articles_controller_test.rb -n test_should_create_article
-Running 1 tests in a single process (parallelization threshold is 50)
-Run options: -n test_should_create_article --seed 18981
-
-# Running:
-
-.
-
-Finished in 0.081972s, 12.1993 runs/s, 48.7972 assertions/s.
-
-1 runs, 4 assertions, 0 failures, 0 errors, 0 skips
-```
+Re-running the test, it passes.
 
 > **NOTE:** If you generated your controller using the scaffold generator, the flash message will already be implemented in your `create` action.
 
