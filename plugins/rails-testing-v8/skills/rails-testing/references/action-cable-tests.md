@@ -132,4 +132,4 @@ class ChatRelayJobTest < ActiveJob::TestCase
 end
 ```
 
-See also: [`writing-tests.md`](writing-tests.md) for Rails-specific assertions; [`job-tests.md`](job-tests.md) for `ActiveJob::TestCase` used by the `ChatRelayJobTest` example.
+See also: [`assertions.md`](assertions.md) for Rails-specific assertions; [`job-tests.md`](job-tests.md) for `ActiveJob::TestCase` used by the `ChatRelayJobTest` example.

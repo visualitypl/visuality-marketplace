@@ -75,4 +75,4 @@ end
 
 This method is not recommended in general, as it circumvents some parts of the framework, such as argument serialization.
 
-See also: [`writing-tests.md`](writing-tests.md) for Rails-specific assertions; [`mailer-tests.md`](mailer-tests.md) for `assert_enqueued_email_with` (mailer-specific wrapper).
+See also: [`assertions.md`](assertions.md) for Rails-specific assertions; [`mailer-tests.md`](mailer-tests.md) for `assert_enqueued_email_with` (mailer-specific wrapper).

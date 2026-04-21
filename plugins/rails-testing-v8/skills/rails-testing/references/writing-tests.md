@@ -1,6 +1,6 @@
 # Writing Tests
 
-Covers the basics of testing in Rails: the generated test layout, how a test case is put together, how assertions work, and how to run the test runner. Mirrors the **Introduction to Testing** section of the Rails 8.1.3 testing guide (`guides/source/testing.md` §29–590).
+Covers the test-directory layout, how a test case is structured, and the TDD walkthrough of writing your first failing test, making it pass, and reporting errors. Mirrors the **Test Setup**, **Test Directories**, **The Test Environment**, and **Writing Your First Test** sections of the Rails 8.1.3 testing guide (`guides/source/testing.md` §29–510).
 
 With Rails, testing is central to the development process right from the creation of a new application.
 
@@ -116,6 +116,8 @@ An assertion is a line of code that evaluates an object (or expression) for expe
 
 Every test may contain one or more assertions, with no restriction as to how many assertions are allowed. Only when all the assertions are successful will the test pass.
 
+See [`assertions.md`](assertions.md) for the full assertion catalog (Minitest + Rails-specific) and [`test-runner.md`](test-runner.md) for the `bin/rails test` runner.
+
 ### Your First Failing Test
 
 To see how a test failure is reported, add a failing test to the `article_test.rb` test case. This example asserts that the article will not save without meeting certain criteria; if the article saves successfully, the test will fail, demonstrating a test failure.
@@ -182,23 +184,7 @@ class Article < ApplicationRecord
 end
 ```
 
-Now the test should pass, as the article in our test has not been initialized with a `title`, so the model validation will prevent the save. Running the test again confirms this:
-
-```bash
-$ bin/rails test test/models/article_test.rb:6
-Running 1 tests in a single process (parallelization threshold is 50)
-Run options: --seed 31252
-
-# Running:
-
-.
-
-Finished in 0.027476s, 36.3952 runs/s, 36.3952 assertions/s.
-
-1 runs, 1 assertions, 0 failures, 0 errors, 0 skips
-```
-
-The small green dot displayed means that the test has passed successfully.
+Re-running the test after adding the validation, it passes (output shows `.` with `0 failures, 0 errors`).
 
 > **TIP:** In the process above, a test was written first which fails for a desired functionality, then after, some code was written which adds the functionality. Finally, the test was run again to ensure it passes. This approach to software development is referred to as _Test-Driven Development_ (TDD).
 
@@ -261,176 +247,4 @@ test "should report error" do
 end
 ```
 
-This test should now pass.
-
-## Minitest Assertions
-
-Assertions are the foundation blocks of testing. They are the ones that actually perform the checks to ensure that things are going as planned.
-
-Here's an extract of the assertions available with [`minitest`](https://github.com/minitest/minitest), the default testing library used by Rails. The `[msg]` parameter is an optional string message you can specify to make your test failure messages clearer.
-
-| Assertion | Purpose |
-| :--- | :--- |
-| `assert(test, [msg])` | Ensures that `test` is true. |
-| `assert_not(test, [msg])` | Ensures that `test` is false. |
-| `assert_equal(expected, actual, [msg])` | Ensures that `expected == actual` is true. |
-| `assert_not_equal(expected, actual, [msg])` | Ensures that `expected != actual` is true. |
-| `assert_same(expected, actual, [msg])` | Ensures that `expected.equal?(actual)` is true. |
-| `assert_not_same(expected, actual, [msg])` | Ensures that `expected.equal?(actual)` is false. |
-| `assert_nil(obj, [msg])` | Ensures that `obj.nil?` is true. |
-| `assert_not_nil(obj, [msg])` | Ensures that `obj.nil?` is false. |
-| `assert_empty(obj, [msg])` | Ensures that `obj` is `empty?`. |
-| `assert_not_empty(obj, [msg])` | Ensures that `obj` is not `empty?`. |
-| `assert_match(regexp, string, [msg])` | Ensures that a string matches the regular expression. |
-| `assert_no_match(regexp, string, [msg])` | Ensures that a string doesn't match the regular expression. |
-| `assert_includes(collection, obj, [msg])` | Ensures that `obj` is in `collection`. |
-| `assert_not_includes(collection, obj, [msg])` | Ensures that `obj` is not in `collection`. |
-| `assert_in_delta(expected, actual, [delta], [msg])` | Ensures that the numbers `expected` and `actual` are within `delta` of each other. |
-| `assert_not_in_delta(expected, actual, [delta], [msg])` | Ensures that the numbers `expected` and `actual` are not within `delta` of each other. |
-| `assert_in_epsilon(expected, actual, [epsilon], [msg])` | Ensures that the numbers `expected` and `actual` have a relative error less than `epsilon`. |
-| `assert_not_in_epsilon(expected, actual, [epsilon], [msg])` | Ensures that the numbers `expected` and `actual` have a relative error not less than `epsilon`. |
-| `assert_throws(symbol, [msg]) { block }` | Ensures that the given block throws the symbol. |
-| `assert_raises(exception1, exception2, ...) { block }` | Ensures that the given block raises one of the given exceptions. |
-| `assert_instance_of(class, obj, [msg])` | Ensures that `obj` is an instance of `class`. |
-| `assert_not_instance_of(class, obj, [msg])` | Ensures that `obj` is not an instance of `class`. |
-| `assert_kind_of(class, obj, [msg])` | Ensures that `obj` is an instance of `class` or is descending from it. |
-| `assert_not_kind_of(class, obj, [msg])` | Ensures that `obj` is not an instance of `class` and is not descending from it. |
-| `assert_respond_to(obj, symbol, [msg])` | Ensures that `obj` responds to `symbol`. |
-| `assert_not_respond_to(obj, symbol, [msg])` | Ensures that `obj` does not respond to `symbol`. |
-| `assert_operator(obj1, operator, [obj2], [msg])` | Ensures that `obj1.operator(obj2)` is true. |
-| `assert_not_operator(obj1, operator, [obj2], [msg])` | Ensures that `obj1.operator(obj2)` is false. |
-| `assert_predicate(obj, predicate, [msg])` | Ensures that `obj.predicate` is true, e.g. `assert_predicate str, :empty?`. |
-| `assert_not_predicate(obj, predicate, [msg])` | Ensures that `obj.predicate` is false, e.g. `assert_not_predicate str, :empty?`. |
-| `flunk([msg])` | Ensures failure. Useful to explicitly mark a test that isn't finished yet. |
-
-The above are a subset of assertions that minitest supports. For an exhaustive and more up-to-date list, see the [minitest API documentation](http://docs.seattlerb.org/minitest/Minitest), specifically [`Minitest::Assertions`](http://docs.seattlerb.org/minitest/Minitest/Assertions.html).
-
-With minitest you can add your own assertions. In fact, that's exactly what Rails does — it includes some specialized assertions to make your life easier.
-
-> **NOTE:** Creating your own assertions is a topic that this guide does not cover in depth.
-
-## Rails-Specific Assertions
-
-Rails adds some custom assertions of its own to the `minitest` framework:
-
-| Assertion | Purpose |
-| :--- | :--- |
-| `assert_difference(expressions, difference = 1, message = nil) {...}` | Test numeric difference between the return value of an expression as a result of what is evaluated in the yielded block. |
-| `assert_no_difference(expressions, message = nil, &block)` | Asserts that the numeric result of evaluating an expression is not changed before and after invoking the passed in block. |
-| `assert_changes(expressions, message = nil, from:, to:, &block)` | Test that the result of evaluating an expression is changed after invoking the passed in block. |
-| `assert_no_changes(expressions, message = nil, &block)` | Test the result of evaluating an expression is not changed after invoking the passed in block. |
-| `assert_nothing_raised { block }` | Ensures that the given block doesn't raise any exceptions. |
-| `assert_recognizes(expected_options, path, extras = {}, message = nil)` | Asserts that the routing of the given path was handled correctly and that the parsed options (given in the `expected_options` hash) match path. Basically, it asserts that Rails recognizes the route given by `expected_options`. |
-| `assert_generates(expected_path, options, defaults = {}, extras = {}, message = nil)` | Asserts that the provided options can be used to generate the provided path. This is the inverse of `assert_recognizes`. The `extras` parameter is used to tell the request the names and values of additional request parameters that would be in a query string. The `message` parameter allows you to specify a custom error message for assertion failures. |
-| `assert_routing(expected_path, options, defaults = {}, extras = {}, message = nil)` | Asserts that `path` and `options` match both ways; in other words, it verifies that `path` generates `options` and then that `options` generates `path`. This essentially combines `assert_recognizes` and `assert_generates` into one step. The `extras` hash allows you to specify options that would normally be provided as a query string to the action. The `message` parameter allows you to specify a custom error message to display upon failure. |
-| `assert_response(type, message = nil)` | Asserts that the response comes with a specific status code. You can specify `:success` to indicate 200-299, `:redirect` to indicate 300-399, `:missing` to indicate 404, or `:error` to match the 500-599 range. You can also pass an explicit status number or its symbolic equivalent. |
-| `assert_redirected_to(options = {}, message = nil)` | Asserts that the response is a redirect to a URL matching the given options. You can also pass named routes such as `assert_redirected_to root_path` and Active Record objects such as `assert_redirected_to @article`. |
-| `assert_queries_count(count = nil, include_schema: false, &block)` | Asserts that `&block` generates an `int` number of SQL queries. |
-| `assert_no_queries(include_schema: false, &block)` | Asserts that `&block` generates no SQL queries. |
-| `assert_queries_match(pattern, count: nil, include_schema: false, &block)` | Asserts that `&block` generates SQL queries that match the pattern. |
-| `assert_no_queries_match(pattern, &block)` | Asserts that `&block` generates no SQL queries that match the pattern. |
-| `assert_error_reported(class) { block }` | Asserts that the error class has been reported, e.g. `assert_error_reported IOError { Rails.error.report(IOError.new("Oops")) }`. |
-| `assert_no_error_reported { block }` | Asserts that no errors have been reported, e.g. `assert_no_error_reported { perform_service }`. |
-
-You'll see the usage of some of these assertions in the next chapter.
-
-## Assertions in Test Cases
-
-All the basic assertions such as `assert_equal` defined in `Minitest::Assertions` are also available in the classes we use in our own test cases. In fact, Rails provides the following classes for you to inherit from:
-
-* [`ActiveSupport::TestCase`](https://api.rubyonrails.org/classes/ActiveSupport/TestCase.html)
-* [`ActionMailer::TestCase`](https://api.rubyonrails.org/classes/ActionMailer/TestCase.html)
-* [`ActionView::TestCase`](https://api.rubyonrails.org/classes/ActionView/TestCase.html)
-* [`ActiveJob::TestCase`](https://api.rubyonrails.org/classes/ActiveJob/TestCase.html)
-* [`ActionDispatch::Integration::Session`](https://api.rubyonrails.org/classes/ActionDispatch/Integration/Session.html)
-* [`ActionDispatch::SystemTestCase`](https://api.rubyonrails.org/classes/ActionDispatch/SystemTestCase.html)
-* [`Rails::Generators::TestCase`](https://api.rubyonrails.org/classes/Rails/Generators/TestCase.html)
-
-Each of these classes includes `Minitest::Assertions`, allowing you to use all of the basic assertions in your tests.
-
-> **TIP:** For more information on `minitest`, refer to the [minitest documentation](http://docs.seattlerb.org/minitest).
-
-## The Rails Test Runner
-
-Run all tests at once with the `bin/rails test` command, or a single test file by appending the filename:
-
-```bash
-$ bin/rails test test/models/article_test.rb
-Running 1 tests in a single process (parallelization threshold is 50)
-Run options: --seed 1559
-
-# Running:
-
-..
-
-Finished in 0.027034s, 73.9810 runs/s, 110.9715 assertions/s.
-
-2 runs, 3 assertions, 0 failures, 0 errors, 0 skips
-```
-
-This will run all test methods from the test case.
-
-You can also run a particular test method from the test case by providing the `-n` or `--name` flag and the test's method name:
-
-```bash
-$ bin/rails test test/models/article_test.rb -n test_the_truth
-Running 1 tests in a single process (parallelization threshold is 50)
-Run options: -n test_the_truth --seed 43583
-
-# Running:
-
-.
-
-Finished tests in 0.009064s, 110.3266 tests/s, 110.3266 assertions/s.
-
-1 tests, 1 assertions, 0 failures, 0 errors, 0 skips
-```
-
-You can also run a test at a specific line by providing the line number:
-
-```bash
-$ bin/rails test test/models/article_test.rb:6 # run specific test and line
-```
-
-You can also run a range of tests by providing the line range:
-
-```bash
-$ bin/rails test test/models/article_test.rb:6-20 # runs tests from line 6 to 20
-```
-
-You can also run an entire directory of tests by providing the path to the directory:
-
-```bash
-$ bin/rails test test/controllers # run all tests from specific directory
-```
-
-The test runner also provides other features like failing fast, showing verbose progress, and so on. Inspect the full help with:
-
-```bash
-$ bin/rails test -h
-```
-
-`bin/rails test` runs all tests **except system tests** — system tests are invoked separately via `bin/rails test:system`.
-
-The runner's minitest options include:
-
-| Option | Purpose |
-| :--- | :--- |
-| `-h`, `--help` | Display help. |
-| `--no-plugins` | Bypass minitest plugin auto-loading (or set `$MT_NO_PLUGINS`). |
-| `-s`, `--seed SEED` | Sets random seed. Also via env. Eg: `SEED=n rake`. |
-| `-v`, `--verbose` | Verbose. Show progress processing files. |
-| `--show-skips` | Show skipped at the end of run. |
-| `-n`, `--name PATTERN` | Filter run on `/regexp/` or string. |
-| `--exclude PATTERN` | Exclude `/regexp/` or string from run. |
-| `-S`, `--skip CODES` | Skip reporting of certain types of results (eg `E`). |
-| `-w`, `--warnings` | Run with Ruby warnings enabled. |
-| `-e`, `--environment ENV` | Run tests in the ENV environment. |
-| `-b`, `--backtrace` | Show the complete backtrace. |
-| `-d`, `--defer-output` | Output test failures and errors after the test run. |
-| `-f`, `--fail-fast` | Abort test run on first failure or error. |
-| `-c`, `--[no-]color` | Enable color in the output. |
-| `--profile [COUNT]` | Enable profiling of tests and list the slowest test cases (default: 10). |
-| `-p`, `--pride` | Pride. Show your testing pride! |
-
-Known extensions: `rails`, `pride`.
+Re-running after the `assert_raises(NameError) do ... end` fix, the test passes.

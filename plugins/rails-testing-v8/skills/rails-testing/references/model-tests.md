@@ -4,7 +4,7 @@ Covers model tests: where they live, the generator that creates them, and the su
 
 Model tests exercise the models of your application and their associated logic. You test that logic using the assertions and fixtures explored elsewhere in this skill:
 
-- Assertions — both the Minitest set and the Rails-specific extensions: [`writing-tests.md`](writing-tests.md).
+- Assertions — both the Minitest set and the Rails-specific extensions: [`assertions.md`](assertions.md).
 - Fixtures — YAML test data, associations, ERB, and the `<fixture_set>(:name)` accessor (e.g. `users(:david)`) that returns an Active Record instance: [`test-database.md`](test-database.md).
 
 ## Location

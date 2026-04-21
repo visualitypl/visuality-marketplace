@@ -237,4 +237,4 @@ end
 
 Moreover, since the test class extends from `ActionView::TestCase`, you have access to Rails' helper methods such as `link_to` or `pluralize`.
 
-See also: [`writing-tests.md`](writing-tests.md) for Rails-specific assertions; [`system-tests.md`](system-tests.md) for the Capybara assertions referenced by `ViewPartialTestCase`.
+See also: [`assertions.md`](assertions.md) for Rails-specific assertions; [`system-tests.md`](system-tests.md) for the Capybara assertions referenced by `ViewPartialTestCase`.

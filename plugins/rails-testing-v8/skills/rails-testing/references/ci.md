@@ -12,4 +12,4 @@ $ bin/rails test
 
 If you are using [System Tests](system-tests.md), `bin/rails test` will not run them, since they can be slow. To also run them, add another CI step that runs `bin/rails test:system`, or change your first step to `bin/rails test:all`, which runs all tests including system tests.
 
-See also: [`writing-tests.md`](writing-tests.md) for the full `bin/rails test` runner options; [`system-tests.md`](system-tests.md) for system-test setup.
+See also: [`test-runner.md`](test-runner.md) for the full `bin/rails test` runner options; [`system-tests.md`](system-tests.md) for system-test setup.

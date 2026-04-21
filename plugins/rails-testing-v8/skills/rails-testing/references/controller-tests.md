@@ -99,7 +99,7 @@ test "should create article" do
 end
 ```
 
-See [writing-tests.md](writing-tests.md) for the full signatures of `assert_difference` and `assert_redirected_to`.
+See [assertions.md](assertions.md) for the full signatures of `assert_difference` and `assert_redirected_to`.
 
 > **NOTE:** If you followed the Basic Authentication section of the Getting Started guide, you'll need to add an authorization header to every request:
 

@@ -14,5 +14,5 @@ Backs [`../skills/rails-testing/references/controller-tests.md`](../skills/rails
 | `flash`, `session` accessible as hashes after request | `guides/source/testing.md` §Testing Other Request Objects |
 | `ActionController::HttpAuthentication::Basic.encode_credentials(user_name, password)` | `actionpack/lib/action_controller/metal/http_authentication.rb` line 134 |
 | `setup do … end` / `teardown do … end` macros | `activesupport/lib/active_support/testing/setup_and_teardown.rb` lines 29, 34 |
-| `assert_response`, `assert_redirected_to` (used throughout) — cross-linked | `actionpack/lib/action_dispatch/testing/assertions/response.rb` lines 33, 60; see [writing-tests.md](../skills/rails-testing/references/writing-tests.md) |
+| `assert_response`, `assert_redirected_to` (used throughout) — cross-linked | `actionpack/lib/action_dispatch/testing/assertions/response.rb` lines 33, 60; see [assertions.md](../skills/rails-testing/references/assertions.md) |
 | `articles(:one)` fixture accessor — cross-linked | `activerecord/lib/active_record/test_fixtures.rb`; see [test-database.md](../skills/rails-testing/references/test-database.md) |

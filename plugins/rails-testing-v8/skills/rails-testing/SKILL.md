@@ -36,7 +36,9 @@ Claude Code loads this SKILL.md into context and pulls individual references onl
 
 | Scenario | File |
 | :--- | :--- |
-| Test layout, writing your first test, Minitest + Rails-specific assertions, the `bin/rails test` runner | [references/writing-tests.md](references/writing-tests.md) |
+| Test layout, writing your first test, TDD walkthrough, reporting errors | [references/writing-tests.md](references/writing-tests.md) |
+| Minitest assertions (non-obvious entries) + Rails-specific assertions (`assert_difference`, `assert_changes`, `assert_response`, `assert_redirected_to`, `assert_queries_count`, routing assertions, etc.) + test-case superclasses | [references/assertions.md](references/assertions.md) |
+| The `bin/rails test` runner: invocations (file, method, line, line range, directory) and flag reference | [references/test-runner.md](references/test-runner.md) |
 | Test database setup, fixtures (YAML, associations, Active Storage, ERB), accessing fixtures as AR objects, transactional tests | [references/test-database.md](references/test-database.md) |
 | Model tests: location, generator, superclass | [references/model-tests.md](references/model-tests.md) |
 | Controller functional tests: HTTP helpers (`get`/`post`/...), XHR, request/response objects, headers, flash, show/update/delete patterns | [references/controller-tests.md](references/controller-tests.md) |
@@ -61,4 +63,4 @@ Claude Code loads this SKILL.md into context and pulls individual references onl
 
 ## Version
 
-This skill documents the Rails testing guide at **Rails 8.1.3** (https://guides.rubyonrails.org/testing.html). The rails source is pinned to the `v8.1.3` tag — see each reference file's "Source traceability" table for citations.
+This skill documents the Rails testing guide at **Rails 8.1.3** (https://guides.rubyonrails.org/testing.html). The rails source is pinned to the `v8.1.3` tag — citations live in `plugins/rails-testing-v8/_audit/`, one file per reference.

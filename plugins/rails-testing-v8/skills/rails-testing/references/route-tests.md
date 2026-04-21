@@ -6,4 +6,4 @@ Like everything else in your Rails application, you can test your routes. Route 
 
 For more information on routing assertions available in Rails, see the API documentation for [`ActionDispatch::Assertions::RoutingAssertions`](https://api.rubyonrails.org/classes/ActionDispatch/Assertions/RoutingAssertions.html).
 
-The three main routing assertions — `assert_recognizes`, `assert_generates`, and `assert_routing` — are covered in the Rails-Specific Assertions table: see [`writing-tests.md`](writing-tests.md).
+The three main routing assertions — `assert_recognizes`, `assert_generates`, and `assert_routing` — are covered in the Rails-Specific Assertions table: see [`assertions.md`](assertions.md).

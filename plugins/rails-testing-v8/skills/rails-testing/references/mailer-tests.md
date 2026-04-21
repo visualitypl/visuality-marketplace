@@ -194,4 +194,4 @@ end
 
 > **NOTE:** The `assert_emails` method is not tied to a particular deliver method and will work with emails delivered with either the `deliver_now` or `deliver_later` method. If we explicitly want to assert that the email has been enqueued we can use the `assert_enqueued_email_with` ([examples above](#testing-enqueued-emails)) or `assert_enqueued_emails` methods. More information can be found in the [documentation](https://api.rubyonrails.org/classes/ActionMailer/TestHelper.html).
 
-See also: [`writing-tests.md`](writing-tests.md) for Rails-specific assertions; [`test-database.md`](test-database.md) for general fixture conventions.
+See also: [`assertions.md`](assertions.md) for Rails-specific assertions; [`test-database.md`](test-database.md) for general fixture conventions.

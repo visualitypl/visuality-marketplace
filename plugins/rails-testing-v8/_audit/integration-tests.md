@@ -13,4 +13,4 @@ Backs [`../skills/rails-testing/references/integration-tests.md`](../skills/rail
 | `open_session` duplicates the current session so parallel sessions can be tested side-by-side | `actionpack/lib/action_dispatch/testing/integration.rb` lines 405–411 |
 | `BlogFlowTest` / `CreatingArticlesTest` examples and `assert_dom`/`assert_select` alias note | `guides/source/testing.md` §Integration Testing |
 | `get`/`post` request helpers — cross-linked | `actionpack/lib/action_dispatch/testing/integration.rb`; see [controller-tests.md](../skills/rails-testing/references/controller-tests.md) |
-| `assert_response`, `assert_redirected_to` — cross-linked | `actionpack/lib/action_dispatch/testing/assertions/response.rb`; see [writing-tests.md](../skills/rails-testing/references/writing-tests.md) |
+| `assert_response`, `assert_redirected_to` — cross-linked | `actionpack/lib/action_dispatch/testing/assertions/response.rb`; see [assertions.md](../skills/rails-testing/references/assertions.md) |
