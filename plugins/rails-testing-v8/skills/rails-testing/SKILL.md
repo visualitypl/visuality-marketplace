@@ -48,8 +48,9 @@ Claude Code loads this SKILL.md into context and pulls individual references onl
 | Mailer tests: `ActionMailer::TestCase`, fixtures in `test/fixtures/<mailer>/`, `assert_emails`, `assert_enqueued_email_with`, integration + system patterns | [references/mailer-tests.md](references/mailer-tests.md) |
 | Job tests: `ActiveJob::TestCase`, testing jobs in isolation vs in context, `assert_enqueued_with`, `perform_enqueued_jobs`, testing raised exceptions | [references/job-tests.md](references/job-tests.md) |
 | Action Cable tests: Connection / Channel test cases, `assert_broadcast_on`, `assert_has_stream`, broadcasts inside other components | [references/action-cable-tests.md](references/action-cable-tests.md) |
+| CI: the single `bin/rails test` command and the system-test caveat | [references/ci.md](references/ci.md) |
 
-Other topics (parallel testing, CI, eager-loading) will land in later reference files as this skill is built out.
+Other topics (parallel testing, eager-loading) will land in later reference files as this skill is built out.
 
 ## Core principles
 
