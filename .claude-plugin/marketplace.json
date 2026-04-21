@@ -7,14 +7,14 @@
   },
   "metadata": {
     "description": "Visuality's open marketplace of Claude Code plugins — skills, agents, commands, hooks and MCP servers for Ruby, Rails and AI tooling.",
-    "version": "0.1.0"
+    "version": "1.0.0"
   },
   "plugins": [
     {
       "name": "ruby-llm-v1",
       "source": "./plugins/ruby-llm-v1",
       "description": "RubyLLM gem 1.x reference (currently 1.14.1) — chat, tools, structured output, streaming, Rails integration, agents, embeddings, image/moderation/transcription.",
-      "version": "0.1.0",
+      "version": "1.0.0",
       "author": {
         "name": "Paweł Strzałkowski",
         "email": "p.strzalkowski@visuality.pl"
