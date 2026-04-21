@@ -36,6 +36,7 @@ Claude Code loads this SKILL.md into context and pulls individual references onl
 
 | Scenario | File |
 | :--- | :--- |
+| Test layout, writing your first test, Minitest + Rails-specific assertions, the `bin/rails test` runner | [references/writing-tests.md](references/writing-tests.md) |
 | Test database setup, fixtures (YAML, associations, Active Storage, ERB), accessing fixtures as AR objects, transactional tests | [references/test-database.md](references/test-database.md) |
 
 Other topics (model / controller / integration / system / mailer / job / Action Cable tests, test helpers, routes, views, parallel testing, CI, eager-loading) will land in later reference files as this skill is built out.
