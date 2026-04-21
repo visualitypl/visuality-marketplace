@@ -51,6 +51,7 @@ Claude Code loads this SKILL.md into context and pulls individual references onl
 | CI: the single `bin/rails test` command and the system-test caveat | [references/ci.md](references/ci.md) |
 | Parallel testing: `parallelize(workers:, with:, threshold:)`, processes vs threads, `parallelize_setup` / `parallelize_teardown`, parallel transactions | [references/parallel-testing.md](references/parallel-testing.md) |
 | Eager-loading tests: catching load-time errors via `config.eager_load = ENV["CI"].present?` or `Rails.application.eager_load!` in a compliance test | [references/eager-loading.md](references/eager-loading.md) |
+| Error-rescue in request tests; `travel_to` and time-dependent testing | [references/additional-resources.md](references/additional-resources.md) |
 
 ## Core principles
 
