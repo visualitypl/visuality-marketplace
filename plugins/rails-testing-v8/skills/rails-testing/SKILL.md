@@ -44,8 +44,9 @@ Claude Code loads this SKILL.md into context and pulls individual references onl
 | System tests (Capybara): when to use, generator, `driven_by`, screen sizes, Capybara assertions, screenshot helper | [references/system-tests.md](references/system-tests.md) |
 | Test helpers: extracting shared helpers into modules, eagerly requiring helpers | [references/test-helpers.md](references/test-helpers.md) |
 | Route tests: where they live, pointer to routing assertions | [references/route-tests.md](references/route-tests.md) |
+| View tests: `assert_dom`, `document_root_element`, `rendered` parsers, partial tests, helper tests | [references/view-tests.md](references/view-tests.md) |
 
-Other topics (mailer / job / Action Cable tests, views, parallel testing, CI, eager-loading) will land in later reference files as this skill is built out.
+Other topics (mailer / job / Action Cable tests, parallel testing, CI, eager-loading) will land in later reference files as this skill is built out.
 
 ## Core principles
 
