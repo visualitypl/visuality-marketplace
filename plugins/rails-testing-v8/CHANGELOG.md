@@ -14,11 +14,10 @@ Reference-tree restructuring for token efficiency. No change in target-library c
 - Trimmed duplicate `bin/rails test` session-output blocks in `writing-tests.md`, `test-runner.md`, and `controller-tests.md` — one fail-run + one pass-run per teaching moment; subsequent confirmations use prose.
 
 ### Added
-- `_audit/` — parallel tree at the plugin root holding source-traceability tables, one file per reference. Used for the CLAUDE.md-mandated re-audit passes against pinned Rails source; not linked from SKILL.md, so agents never load it.
 - `CHANGELOG.md`.
 
 ### Removed
-- `## Source traceability` sections from every `references/*.md` file (moved to `_audit/`).
+- `## Source traceability` sections from every `references/*.md` file. Re-audits regenerate citations against the pinned `rails/rails@v8.1.3` source rather than relying on stored tables; prior tables remain available in git history if needed as a starting point.
 - `Rails version: **8.1.3**.` footer from every `references/*.md` file (version remains in `SKILL.md` frontmatter as `rails_version: "8.1.3"`).
 
 ## [1.0.0] — initial release

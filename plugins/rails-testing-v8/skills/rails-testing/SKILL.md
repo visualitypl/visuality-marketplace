@@ -63,4 +63,4 @@ Claude Code loads this SKILL.md into context and pulls individual references onl
 
 ## Version
 
-This skill documents the Rails testing guide at **Rails 8.1.3** (https://guides.rubyonrails.org/testing.html). The rails source is pinned to the `v8.1.3` tag — citations live in `plugins/rails-testing-v8/_audit/`, one file per reference.
+This skill documents the Rails testing guide at **Rails 8.1.3** (https://guides.rubyonrails.org/testing.html). The rails source is pinned to the `v8.1.3` tag — re-audits regenerate citations against that tag rather than relying on stored tables.
