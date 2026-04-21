@@ -73,11 +73,9 @@ The line `ActionMailer::Base.delivery_method = :test` in `config/environments/te
 
 ### Testing Enqueued Emails
 
-You can use the `assert_enqueued_email_with` assertion to confirm that the email has been enqueued with all of the expected mailer method arguments and/or parameterized mailer parameters. This allows you to match any emails that have been enqueued with the `deliver_later` method.
+You can use the `assert_enqueued_email_with` assertion to confirm that the email has been enqueued with all of the expected mailer method arguments and/or parameterized mailer parameters. This matches emails enqueued with `deliver_later`.
 
-As with the basic test case, we create the email and store the returned object in the `email` variable. The following examples include variations of passing arguments and/or parameters.
-
-This example will assert that the email has been enqueued with the correct arguments:
+Basic form — mailer class, action, and positional `args:`:
 
 ```ruby
 # test/mailers/user_mailer_test.rb
@@ -85,10 +83,9 @@ require "test_helper"
 
 class UserMailerTest < ActionMailer::TestCase
   test "invite" do
-    # Create the email and store it for further assertions
     email = UserMailer.create_invite("me@example.com", "friend@example.com")
 
-    # Test that the email got enqueued with the correct arguments
+    # args: accepts positional args; pass [{ from:, to: }] to match keyword-style mailer args
     assert_enqueued_email_with UserMailer, :create_invite, args: ["me@example.com", "friend@example.com"] do
       email.deliver_later
     end
@@ -96,7 +93,7 @@ class UserMailerTest < ActionMailer::TestCase
 end
 ```
 
-This example will assert that a mailer has been enqueued with the correct mailer method named arguments by passing a hash of the arguments as `args`:
+Parameterized mailer — mailer parameters go in `params:`, mailer-method arguments in `args:`:
 
 ```ruby
 # test/mailers/user_mailer_test.rb
@@ -104,56 +101,17 @@ require "test_helper"
 
 class UserMailerTest < ActionMailer::TestCase
   test "invite" do
-    # Create the email and store it for further assertions
-    email = UserMailer.create_invite(from: "me@example.com", to: "friend@example.com")
-
-    # Test that the email got enqueued with the correct named arguments
-    assert_enqueued_email_with UserMailer, :create_invite,
-    args: [{ from: "me@example.com", to: "friend@example.com" }] do
-      email.deliver_later
-    end
-  end
-end
-```
-
-This example will assert that a parameterized mailer has been enqueued with the correct parameters and arguments. The mailer parameters are passed as `params` and the mailer method arguments as `args`:
-
-```ruby
-# test/mailers/user_mailer_test.rb
-require "test_helper"
-
-class UserMailerTest < ActionMailer::TestCase
-  test "invite" do
-    # Create the email and store it for further assertions
     email = UserMailer.with(all: "good").create_invite("me@example.com", "friend@example.com")
 
-    # Test that the email got enqueued with the correct mailer parameters and arguments
     assert_enqueued_email_with UserMailer, :create_invite,
-    params: { all: "good" }, args: ["me@example.com", "friend@example.com"] do
+      params: { all: "good" }, args: ["me@example.com", "friend@example.com"] do
       email.deliver_later
     end
   end
 end
 ```
 
-This example shows an alternative way to test that a parameterized mailer has been enqueued with the correct parameters:
-
-```ruby
-# test/mailers/user_mailer_test.rb
-require "test_helper"
-
-class UserMailerTest < ActionMailer::TestCase
-  test "invite" do
-    # Create the email and store it for further assertions
-    email = UserMailer.with(to: "friend@example.com").create_invite
-
-    # Test that the email got enqueued with the correct mailer parameters
-    assert_enqueued_email_with UserMailer.with(to: "friend@example.com"), :create_invite do
-      email.deliver_later
-    end
-  end
-end
-```
+> **NOTE:** Alternatively, pass a parameterized mailer directly as the first argument: `assert_enqueued_email_with UserMailer.with(to: "friend@example.com"), :create_invite do … end`. Same effect, terser when you only need the `params:` half.
 
 ## Functional and System Testing
 
