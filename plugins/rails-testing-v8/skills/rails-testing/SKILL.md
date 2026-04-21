@@ -40,8 +40,9 @@ Claude Code loads this SKILL.md into context and pulls individual references onl
 | Test database setup, fixtures (YAML, associations, Active Storage, ERB), accessing fixtures as AR objects, transactional tests | [references/test-database.md](references/test-database.md) |
 | Model tests: location, generator, superclass | [references/model-tests.md](references/model-tests.md) |
 | Controller functional tests: HTTP helpers (`get`/`post`/...), XHR, request/response objects, headers, flash, show/update/delete patterns | [references/controller-tests.md](references/controller-tests.md) |
+| Integration tests: `ActionDispatch::IntegrationTest`, generator, multi-request workflows, `follow_redirect!`, `host!`, `https!`, `open_session` | [references/integration-tests.md](references/integration-tests.md) |
 
-Other topics (integration / system / mailer / job / Action Cable tests, test helpers, routes, views, parallel testing, CI, eager-loading) will land in later reference files as this skill is built out.
+Other topics (system / mailer / job / Action Cable tests, test helpers, routes, views, parallel testing, CI, eager-loading) will land in later reference files as this skill is built out.
 
 ## Core principles
 
