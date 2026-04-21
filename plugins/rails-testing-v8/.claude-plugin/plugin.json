@@ -1,6 +1,6 @@
 {
   "name": "rails-testing-v8",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Claude Code skill for Rails 8 testing with Minitest and fixtures — projects the official Rails 8.1.3 testing guide (https://guides.rubyonrails.org/testing.html) into auto-invoked references: test database, fixtures, model/controller/integration/system tests, mailer/job/Action Cable tests, parallel testing, CI. Every claim verified against the guide and rails/rails@v8.1.3 source.",
   "author": {
     "name": "Paweł Strzałkowski",
