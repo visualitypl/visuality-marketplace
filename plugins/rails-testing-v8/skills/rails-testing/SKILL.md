@@ -50,8 +50,7 @@ Claude Code loads this SKILL.md into context and pulls individual references onl
 | Action Cable tests: Connection / Channel test cases, `assert_broadcast_on`, `assert_has_stream`, broadcasts inside other components | [references/action-cable-tests.md](references/action-cable-tests.md) |
 | CI: the single `bin/rails test` command and the system-test caveat | [references/ci.md](references/ci.md) |
 | Parallel testing: `parallelize(workers:, with:, threshold:)`, processes vs threads, `parallelize_setup` / `parallelize_teardown`, parallel transactions | [references/parallel-testing.md](references/parallel-testing.md) |
-
-Other topics (eager-loading) will land in later reference files as this skill is built out.
+| Eager-loading tests: catching load-time errors via `config.eager_load = ENV["CI"].present?` or `Rails.application.eager_load!` in a compliance test | [references/eager-loading.md](references/eager-loading.md) |
 
 ## Core principles
 
