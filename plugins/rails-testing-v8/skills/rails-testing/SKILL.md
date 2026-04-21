@@ -46,8 +46,9 @@ Claude Code loads this SKILL.md into context and pulls individual references onl
 | Route tests: where they live, pointer to routing assertions | [references/route-tests.md](references/route-tests.md) |
 | View tests: `assert_dom`, `document_root_element`, `rendered` parsers, partial tests, helper tests | [references/view-tests.md](references/view-tests.md) |
 | Mailer tests: `ActionMailer::TestCase`, fixtures in `test/fixtures/<mailer>/`, `assert_emails`, `assert_enqueued_email_with`, integration + system patterns | [references/mailer-tests.md](references/mailer-tests.md) |
+| Job tests: `ActiveJob::TestCase`, testing jobs in isolation vs in context, `assert_enqueued_with`, `perform_enqueued_jobs`, testing raised exceptions | [references/job-tests.md](references/job-tests.md) |
 
-Other topics (job / Action Cable tests, parallel testing, CI, eager-loading) will land in later reference files as this skill is built out.
+Other topics (Action Cable tests, parallel testing, CI, eager-loading) will land in later reference files as this skill is built out.
 
 ## Core principles
 
