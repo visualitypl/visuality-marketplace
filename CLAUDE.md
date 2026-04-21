@@ -44,13 +44,27 @@ Mapping: plugin `ruby-llm-v1` wraps skill `ruby-llm` covering library 1.x; a fut
 
 ## Release flow
 
+Per-plugin version changes, driven by the target library:
+
 | Change in target library | Skill action | Plugin version |
 | :--- | :--- | :--- |
 | Patch (`1.14.1` → `1.14.2`) | Quick re-audit of changed source | Bump patch |
 | Minor (`1.14` → `1.15`) | Full audit of new APIs, expand `references/` | Bump minor |
 | Major (`1.x` → `2.0`) | Fork plugin folder to `<name>-v2`, freeze v1 (security fixes only) | New plugin at `1.0.0`; v1 frozen |
 
-Tag releases in git as `v{plugin-version}-{lib}-{lib-version}` (e.g. `v0.2.0-rubyllm-1.15.0`). Legacy users pin the whole marketplace to an old tag.
+The **marketplace version** is a rollup — it bumps to the highest magnitude of any plugin change in that release:
+
+| Change inside a plugin | Marketplace bump |
+| :--- | :--- |
+| Any plugin patch release | patch |
+| Any plugin minor release | minor |
+| Any plugin major release | major |
+| Adding a new plugin | minor |
+| Removing a plugin, or a structural change that breaks `/plugin marketplace add` | major |
+
+Tag releases in git as `v<marketplace-version>` (e.g. `v1.1.0`). Consumers pin the marketplace tag, which pins every plugin to the exact set shipped at that tag. The per-plugin and target-library versions covered by each tag are documented in `CHANGELOG.md` at the repo root, one section per marketplace release.
+
+When bumping, update three places in one commit: the changed plugin's `plugin.json` `version`, the `CHANGELOG.md` entry describing the change, and (if the marketplace magnitude moved) the marketplace release header in `CHANGELOG.md`. Only after that is a new git tag created.
 
 ## Plugin structure (required)
 

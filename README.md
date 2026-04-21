@@ -44,6 +44,7 @@ Note: version pinning (`ruby-llm-v1` vs future `ruby-llm-v2`) is handled by the 
 | Plugin | For | Description |
 | :--- | :--- | :--- |
 | [`ruby-llm-v1`](plugins/ruby-llm-v1/) | RubyLLM 1.x | chat, tools, structured output, streaming, Rails integration, agents, embeddings, moderation, transcription. Verified line-by-line against upstream source. |
+| [`rails-testing-v8`](plugins/rails-testing-v8/) | Rails 8.x | Minitest + fixtures. Test database, model/controller/integration/system/mailer/job/Action Cable tests, parallel testing, CI. Projects the official Rails 8.1.3 testing guide. |
 
 More coming. Want one published here? See [CONTRIBUTING.md](CONTRIBUTING.md).
 
