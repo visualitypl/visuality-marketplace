@@ -1,18 +1,28 @@
 # Changelog
 
-All notable changes to plugins in this marketplace.
+All notable changes to the `visuality-marketplace`.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Release tags follow the pattern `v{plugin-version}-{lib}-{lib-version}` (e.g. `v1.1.0-rails-8.1.3`) so a marketplace tag identifies both the plugin release and the target-library version it projects.
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
-Entries are grouped by plugin; within a plugin, newest first.
+## Versioning policy
 
-## rails-testing-v8
+The marketplace version is a rollup of its plugins: the marketplace bumps to the **highest magnitude** of any plugin change released under that marketplace version.
 
-Projects the [Rails 8.1.3 testing guide](https://guides.rubyonrails.org/testing.html) with every claim verified against `rails/rails@v8.1.3` source.
+| Change inside a plugin | Marketplace bump |
+| :--- | :--- |
+| Any plugin patch release (`1.2.3` → `1.2.4`) | patch |
+| Any plugin minor release (`1.2.x` → `1.3.0`) | minor |
+| Any plugin major release (`1.x` → `2.0.0`) | major |
+| Adding a new plugin | minor |
+| Removing a plugin, or a structural change that breaks `/plugin marketplace add` | major |
 
-### [1.1.0] — 2026-04-21
+Consumers pin the marketplace tag (`v<marketplace-version>`), which pins every plugin to the exact set shipped at that tag. Each release entry below lists which plugins moved and to what.
 
-Reference-tree restructuring for token efficiency. No change in target-library coverage.
+## [1.1.0] — 2026-04-21
+
+### rails-testing-v8: 1.0.0 → 1.1.0 (minor)
+
+Reference-tree restructuring for token efficiency. No change in target-library coverage — still projects the Rails 8.1.3 testing guide.
 
 #### Changed
 - Split `references/writing-tests.md` (457 lines) into three focused files: `writing-tests.md` (first-test tutorial + TDD walkthrough only), `assertions.md` (Minitest non-obvious entries + Rails-specific assertions + test-case superclasses), and `test-runner.md` (`bin/rails test` invocations and flags). Agents now load only the topic they need.
@@ -24,9 +34,11 @@ Reference-tree restructuring for token efficiency. No change in target-library c
 - `## Source traceability` sections from every `references/*.md` file. Re-audits regenerate citations against the pinned `rails/rails@v8.1.3` source rather than relying on stored tables; prior tables remain available in git history if needed as a starting point.
 - `Rails version: **8.1.3**.` footer from every `references/*.md` file (version remains in `SKILL.md` frontmatter as `rails_version: "8.1.3"`).
 
-### [1.0.0] — initial release
+## [1.0.0] — initial release
 
-Initial release. Projects the official Rails 8.1.3 testing guide as an auto-invoked Claude Code skill, with every claim verified against `rails/rails@v8.1.3` source.
+### rails-testing-v8: 1.0.0 (initial)
+
+Projects the official [Rails 8.1.3 testing guide](https://guides.rubyonrails.org/testing.html) as an auto-invoked Claude Code skill, with every claim verified against `rails/rails@v8.1.3` source.
 
 #### Added
 - `SKILL.md` with TRIGGER/SKIP auto-invocation rules and a scenario-to-reference routing table.
