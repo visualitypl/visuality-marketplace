@@ -43,8 +43,9 @@ Claude Code loads this SKILL.md into context and pulls individual references onl
 | Integration tests: `ActionDispatch::IntegrationTest`, generator, multi-request workflows, `follow_redirect!`, `host!`, `https!`, `open_session` | [references/integration-tests.md](references/integration-tests.md) |
 | System tests (Capybara): when to use, generator, `driven_by`, screen sizes, Capybara assertions, screenshot helper | [references/system-tests.md](references/system-tests.md) |
 | Test helpers: extracting shared helpers into modules, eagerly requiring helpers | [references/test-helpers.md](references/test-helpers.md) |
+| Route tests: where they live, pointer to routing assertions | [references/route-tests.md](references/route-tests.md) |
 
-Other topics (mailer / job / Action Cable tests, routes, views, parallel testing, CI, eager-loading) will land in later reference files as this skill is built out.
+Other topics (mailer / job / Action Cable tests, views, parallel testing, CI, eager-loading) will land in later reference files as this skill is built out.
 
 ## Core principles
 
